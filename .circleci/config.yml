@@ -4,7 +4,7 @@ jobs:
   smoke-test:
     steps:
       - run
-        name: get request for urbanpiper
+        name: "get request for urbanpiper"
         command: "curl --request GET --url https://urbanpiper.com/"
 
 workflows:  
