@@ -2,10 +2,21 @@
 version: 2.1  
 jobs:
   smoke-test:
+    docker:
+      - image: alpine:latest
     steps:
+      - run: apk add --update curl
       - run:
           name: "get request for urbanpiper"
-          command: "curl --request GET --url https://urbanpiper.com/"
+          command: |
+            URL="https://blog.udacity.com/"
+            # Test if website exists
+            if curl -s --head ${URL} 
+            then
+              return 0
+            else
+              return 1
+            fi
 
 workflows:  
   verification:
